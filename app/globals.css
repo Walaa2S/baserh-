@@ -1,0 +1,117 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* الخلفية الأساسية للموقع */
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 20, 24, 36;
+  --background-end-rgb: 10, 12, 18;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 10, 12, 18;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 222 47% 8%;
+    --foreground: 0 0% 98%;
+    --card: 222 47% 11%;
+    --card-foreground: 0 0% 98%;
+    --popover: 222 47% 14%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 220 98% 61%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 18%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 100% / 0.05;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 22%;
+    --input: 0 0% 14.9%;
+    --ring: 220 98% 61%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+    --radius: 0.5rem;
+  }
+
+  html,
+  body {
+    @apply min-h-screen text-foreground bg-gradient-to-b from-[rgb(var(--background-start-rgb))] to-[rgb(var(--background-end-rgb))] transition-colors duration-500;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-bold tracking-tight;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-card text-card-foreground rounded-xl shadow-xl p-6 border border-border transition-all duration-300;
+  }
+
+  .popover {
+    @apply bg-popover text-popover-foreground rounded-xl shadow-lg p-4;
+  }
+
+  .button {
+    @apply bg-primary text-primary-foreground rounded-lg px-4 py-2 transition duration-200 hover:drop-shadow-glow hover:brightness-110;
+  }
+}
+
+@layer utilities {
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+
+  .fade-in {
+    @apply opacity-0 animate-fadeIn;
+  }
+
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fadeIn {
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+
+  .rtl {
+    direction: rtl;
+    text-align: right;
+  }
+
+  .drop-shadow-glow {
+    filter: drop-shadow(0 0 12px rgba(59, 130, 246, 0.6));
+  }
+}
